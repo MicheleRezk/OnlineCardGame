@@ -27,6 +27,9 @@
   </div>
 </div>
 
+<div *ngIf="isGameFinished" class="winningMsg">
+  <label class="label label-success">Congratulations, winner is Player {{winner}}</label>
+</div>
 <!--Deck-->
 <div class="panel panel-primary">
   <!-- Default panel contents -->
@@ -35,11 +38,14 @@
     <!--Cards Container-->
     <div class="cards-container" *ngIf='!isLoading && cards'>
       <ng-container *ngFor="let card of cards; let i = index;">
-        <div class="card-container">
+        <div class="card-container" (click)="drawCard(card)">
           <div class="card-item">{{card.value}}</div>
-          <img title="draw a card" alt="draw a card" src='/assets/images/card-dummy.png' class="card-image">
+          <img title="draw a card" alt="draw a card" src='/assets/images/card-dummy.png' class="card-image" [ngClass]="{ 'fade': (card.isOpened)}">
         </div>
       </ng-container>
     </div>
   </div>
 </div>
+
+<!--Game Results-->
+<game-results [roundsCount]="roundsCount"></game-results>

@@ -14,12 +14,13 @@ import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 //Services
 import { Config } from './services/config.service';
 import { GameService } from './services/game.service';
-
+import { GameResultsComponent } from './components/game-results/game-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardGameComponent,
+    GameResultsComponent,
     NavMenuComponent,
     SpinnerComponent
   ],

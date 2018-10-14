@@ -40,13 +40,14 @@
   margin-top: 22px;
 }
 
-.card-container
-{
-  width:100px;
-  height:100px;
-  position:relative;
-  float:left;
+.card-container {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  float: left;
+  cursor: pointer;
 }
+
 .card-image, .card-item {
   position: absolute;
   top: 0;
@@ -56,13 +57,14 @@
   margin: 5px;
   display: block;
 }
+
 .card-image {
   cursor: pointer;
-  z-index:10;
-  opacity:1;
+  z-index: 10;
+  opacity: 1;
 }
+
 .card-item {
-  
   font-weight: bold;
   text-align: center;
   color: darkblue;
@@ -71,8 +73,17 @@
   vertical-align: middle;
   line-height: 6;
 }
+
 .fade {
   -webkit-transition: opacity 2s; /* For Safari 3.1 to 6.0 */
   transition: opacity 2s;
   opacity: 0;
+}
+
+.winningMsg {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5px;
+  line-height: 20px;
 }
