@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 
 namespace CardGame.Web
 {
@@ -35,7 +34,7 @@ namespace CardGame.Web
             //Inject Our Custom Services
             services.Configure<GameSettingsModel>(Configuration.GetSection("GameSettings"));
             var gameSettings = new GameSettingsModel(
-                Configuration["GameSettings:NumberOfCards"], 
+                Configuration["GameSettings:NumberOfCards"],
                 Configuration["GameSettings:MinimumNumberOfPlayers"]
                 );
             services.AddScoped<IGameServices, GameServices>(serviceProvider =>
@@ -53,7 +52,7 @@ namespace CardGame.Web
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
@@ -77,7 +76,6 @@ namespace CardGame.Web
 
                 if (env.IsDevelopment())
                 {
-                    //spa.Options.StartupTimeout = new TimeSpan(0, 0, 100);
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });

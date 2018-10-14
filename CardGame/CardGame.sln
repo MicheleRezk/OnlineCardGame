@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+VisualStudioVersion = 15.0.28010.2046
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGame.Web", "CardGame.Web\CardGame.Web.csproj", "{21ABEAAE-E1F4-4F5C-8CC5-F34FD321B07A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGame.Web", "CardGame.Web\CardGame.Web.csproj", "{90D3810C-0C67-45D0-AA90-752CAF40D57E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGame.Domain", "CardGame.Domain\CardGame.Domain.csproj", "{F63A90FF-31D0-4ABE-B9E4-7818226E700C}"
 EndProject
@@ -17,10 +17,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{21ABEAAE-E1F4-4F5C-8CC5-F34FD321B07A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21ABEAAE-E1F4-4F5C-8CC5-F34FD321B07A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21ABEAAE-E1F4-4F5C-8CC5-F34FD321B07A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21ABEAAE-E1F4-4F5C-8CC5-F34FD321B07A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90D3810C-0C67-45D0-AA90-752CAF40D57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90D3810C-0C67-45D0-AA90-752CAF40D57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90D3810C-0C67-45D0-AA90-752CAF40D57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90D3810C-0C67-45D0-AA90-752CAF40D57E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F63A90FF-31D0-4ABE-B9E4-7818226E700C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F63A90FF-31D0-4ABE-B9E4-7818226E700C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F63A90FF-31D0-4ABE-B9E4-7818226E700C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -38,6 +38,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F2041D4D-E364-4859-9C1C-8521E35BB74E}
+		SolutionGuid = {EA2CBC31-8823-4D7D-87A5-5AE629E00293}
 	EndGlobalSection
 EndGlobal
