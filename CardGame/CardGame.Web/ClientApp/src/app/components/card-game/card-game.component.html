@@ -1,0 +1,45 @@
+<div class='row'>
+  <h1 class="heading">Card Game</h1>
+  <!--(spinner)-->
+  <spinner [loading]="isLoading"></spinner>
+</div>
+
+<!--Game Settings-->
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Game Settings - Change in settings and Press Start New Game</b></div>
+  <div class="panel-body">
+    <div class="form-group col-xs-3">
+      <label>Number of Players:</label>
+      <input type="number" min="2" class="form-control" placeholder="# of Players" [(ngModel)]='playersCount'>
+    </div>
+    <div class="form-group col-xs-3">
+      <label>Number of Rounds:</label>
+      <input type="number" min="2" class="form-control" placeholder="# of Rounds" [(ngModel)]='roundsCount'>
+    </div>
+    <div class="form-group col-xs-3 divStartGame">
+      <button type="button" class="btn btn-primary" (click)="initalizeCardGame()">Start New Game</button>
+    </div>
+    <div class="form-group col-xs-3">
+      <label>Current Round: <span class="label label-danger">{{currentRound}} of {{roundsCount}}</span></label>
+      <label>Current Player: <span class="label label-danger">Player {{currentPlayer}} of {{playersCount}}</span></label>
+    </div>
+  </div>
+</div>
+
+<!--Deck-->
+<div class="panel panel-primary">
+  <!-- Default panel contents -->
+  <div class="panel-heading"><b>Player {{currentPlayer}} : Please click on any randow card from the below deck</b></div>
+  <div class="panel-body">
+    <!--Cards Container-->
+    <div class="cards-container" *ngIf='!isLoading && cards'>
+      <ng-container *ngFor="let card of cards; let i = index;">
+        <div class="card-container">
+          <div class="card-item">{{card.value}}</div>
+          <img title="draw a card" alt="draw a card" src='/assets/images/card-dummy.png' class="card-image">
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
