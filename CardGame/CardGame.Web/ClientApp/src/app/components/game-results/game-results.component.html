@@ -3,5 +3,29 @@
   <!-- Default panel contents -->
   <div class="panel-heading"><b>Game Results:</b></div>
   <div class="panel-body">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Round</th>
+          <!--draw players as columns-->
+          <ng-container *ngFor="let playerId of allPlayers; let i = index;">
+            <th scope="col">Player {{playerId}}</th>
+          </ng-container>
+          <th scope="col">Round Winner</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--iterate through each round result-->
+        <ng-container *ngFor="let roundResult of gameResults; let i = index;">
+          <tr>
+            <th scope="row">{{roundResult.roundID}}</th>
+            <ng-container *ngFor="let playerCard of roundResult.playerCards; let j = index;">
+              <td scope="col">{{playerCard.card.value}}</td>
+            </ng-container>
+            <td>{{roundResult.winnerID}}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
 </div>

@@ -46,6 +46,7 @@ export class CardGameComponent implements OnInit {
   }
   initalizeCardGame(): void {
     this.isLoading = true;
+    console.log(this.playersCount);
     this._gameService.getNewCardGame(this.playersCount, this.roundsCount).subscribe(
       response => this.loadTheGame(response),
       error => this.errorMessage = <any>error,
@@ -60,6 +61,8 @@ export class CardGameComponent implements OnInit {
     this.currentRound = 1;
     this.winner = null;
     this.isGameFinished = false;
+    //reset game results
+    this.Child_GameResults.resetGameResults(this.playersCount, this.roundsCount);
   }
   //when player choose card
   drawCard(card: Card): void {

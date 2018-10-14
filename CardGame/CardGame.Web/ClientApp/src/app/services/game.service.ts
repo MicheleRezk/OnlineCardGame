@@ -5,18 +5,15 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 
-
 import { Config } from './config.service';
 import { Game } from '../models/game.model';
 import { strictEqual } from 'assert';
 
 @Injectable()
 export class GameService {
-
   constructor(private _http: HttpClient, private _config: Config) { }
 
   getNewCardGame(playersCount: number, maxOfRounds: number): Observable<Game> {
-
     let numberOfRounds: string = 'null';
     if (maxOfRounds != null)
       numberOfRounds = maxOfRounds.toString();
@@ -26,9 +23,9 @@ export class GameService {
       .set('playersCount', playersCount.toString())
       .set('maxOfRounds', numberOfRounds);
 
-
     return this._http.get<Game>(this._config.BACKEND.GAME.GET, { params })
-      .do(data => console.log('All: ' + JSON.stringify(data)))
+      //.do(data => console.log('All: ' + JSON.stringify(data)))
+      .do(data => console.log('game is loaded now'))
       .catch(this.handleError);
   }
   private handleError(err: HttpErrorResponse) {
