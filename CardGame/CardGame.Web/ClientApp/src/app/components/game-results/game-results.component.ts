@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import * as _ from 'lodash-es';
+
 //Models
 import { RoundResult } from '../../models/round-result.model';
+import { PlayerCard } from '../../models/player-card.model';
+import { PlayerWinnings } from '../../models/player-winnings.model';
 
 //Services
 import { Config } from '../../services/config.service';
-import { PlayerCard } from '../../models/player-card.model';
-import { PlayerWinnings } from '../../models/player-winnings.model';
-import { platform } from 'os';
 
 @Component({
   selector: 'game-results',

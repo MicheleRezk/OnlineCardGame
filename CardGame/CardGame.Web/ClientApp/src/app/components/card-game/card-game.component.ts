@@ -2,14 +2,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 //Models
 import { Game } from '../../models/game.model';
+import { Card } from '../../models/card.model';
+import { RoundResult } from '../../models/round-result.model';
+import { PlayerCard } from '../../models/player-card.model';
 
 //Services
 import { GameService } from '../../services/game.service';
 import { Config } from '../../services/config.service';
-import { Card } from '../../models/card.model';
-import { RoundResult } from '../../models/round-result.model';
+
+//Components
 import { GameResultsComponent } from '../game-results/game-results.component';
-import { PlayerCard } from '../../models/player-card.model';
 
 @Component({
   selector: 'card-game',
