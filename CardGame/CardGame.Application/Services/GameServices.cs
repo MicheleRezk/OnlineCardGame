@@ -12,26 +12,31 @@ namespace CardGame.Application.Services
     /// </summary>
     public class GameServices : IGameServices
     {
-
         #region Properites
+
         public GameSettingsModel GameSettings
         {
-            get;private set;
+            get; private set;
         }
-        #endregion
+
+        #endregion Properites
 
         #region Constructors
+
         public GameServices()
         {
             GameSettings = new GameSettingsModel();
         }
+
         public GameServices(GameSettingsModel gameSettings)
         {
             GameSettings = gameSettings;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Functions
+
         /// <summary>
         /// Creating Deck and fill it with the 52 cards
         /// </summary>
@@ -39,11 +44,9 @@ namespace CardGame.Application.Services
         public Deck CreateDeck()
         {
             var cards = new List<Card>();
-            Card card = null;
             for (int i = 1; i <= GameSettings.NumberOfCards; i++)
             {
-                card = new Card(i);
-                cards.Add(card);
+                cards.Add(new Card(i));
             }
             var deck = new Deck(cards);
             return deck;
@@ -79,7 +82,7 @@ namespace CardGame.Application.Services
         public Game CreateCardGame(int playersCount, Deck shuffledDeck, int? maxOfRounds)
         {
             //Check Game Params and throw exception if any param not valid
-            CheckCreateCardGameParams(playersCount,shuffledDeck,maxOfRounds);
+            ValidateCreateCardGameParams(playersCount, shuffledDeck, maxOfRounds);
 
             //Create Card Game Instance
             var game = new Game(playersCount, shuffledDeck);
@@ -97,9 +100,10 @@ namespace CardGame.Application.Services
         }
 
         #region Helpers
-        public void CheckCreateCardGameParams(int playersCount, Deck shuffledDeck, int? maxOfRounds)
+
+        private void ValidateCreateCardGameParams(int playersCount, Deck shuffledDeck, int? maxOfRounds)
         {
-            //check if number of players less than MinimumNumberOfPlayers, then set it with the minimum number of players 
+            //check if number of players less than MinimumNumberOfPlayers, then set it with the minimum number of players
             if (playersCount < GameSettings.MinimumNumberOfPlayers)
             {
                 throw new ArgumentException($"playersCount must be at least {GameSettings.MinimumNumberOfPlayers} players");
@@ -118,10 +122,10 @@ namespace CardGame.Application.Services
             {
                 throw new ArgumentException("shuffledDeck can't have empty cards");
             }
-
         }
-        #endregion
 
-        #endregion
+        #endregion Helpers
+
+        #endregion Functions
     }
 }

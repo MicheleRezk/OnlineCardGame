@@ -12,17 +12,21 @@ namespace CardGame.Domain
     public class Game
     {
         #region Properites
-        public Deck Deck { get; set; }
-        public int PlayersCount { get; set; }
+
+        public Deck Deck { get; private set; }
+        public int PlayersCount { get; private set; }
         public int RoundsCount { get; set; }
-        #endregion
+
+        #endregion Properites
 
         #region Constructors
+
         public Game(int playersCount, Deck deck)
         {
             PlayersCount = playersCount;
             Deck = deck;
         }
-        #endregion
+
+        #endregion Constructors
     }
 }

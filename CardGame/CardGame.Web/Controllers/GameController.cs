@@ -14,16 +14,22 @@ namespace CardGame.Web.Controllers
     public class GameController : Controller
     {
         #region Fields
+
         private readonly IGameServices _gameServices;
-        #endregion
+
+        #endregion Fields
 
         #region Constructors
+
         public GameController(IGameServices gameServices)
         {
             _gameServices = gameServices;
         }
-        #endregion
+
+        #endregion Constructors
+
         #region API Methods
+
         /// <summary>
         /// Create Card Game based on params and return it as Json Object
         /// </summary>
@@ -41,6 +47,7 @@ namespace CardGame.Web.Controllers
             var game = _gameServices.CreateCardGame(playersCount, shuffledDeck, maxOfRounds);
             return game;
         }
-        #endregion
+
+        #endregion API Methods
     }
 }

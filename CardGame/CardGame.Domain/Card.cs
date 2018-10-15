@@ -9,26 +9,33 @@ namespace CardGame.Domain
     public class Card
     {
         #region Properites
-        public int Value { get; set; }
-        #endregion
+
+        public int Value { get; private set; }
+
+        #endregion Properites
 
         #region Constructors
-        public Card (int value)
+
+        public Card(int value)
         {
             Value = value;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Functions
+
         public override bool Equals(object obj)
         {
             var card = obj as Card;
             return this.Value.Equals(card.Value);
         }
+
         public override int GetHashCode()
         {
             return Value.GetHashCode();
         }
-        #endregion
+
+        #endregion Functions
     }
 }

@@ -11,20 +11,26 @@ namespace CardGame.Domain
     /// </summary>
     public class GameSettingsModel
     {
+        #region Properites
+
         public int NumberOfCards { get; set; }
         public int MinimumNumberOfPlayers { get; set; }
 
+        #endregion Properites
+
         #region Constructors
+
         public GameSettingsModel()
         {
             //Set it with default settings
             NumberOfCards = 52;
             MinimumNumberOfPlayers = 2;
         }
+
         public GameSettingsModel(string numberOfCards, string minimumNumberOfPlayers)
         {
-            int numOfCards,numOfPlayers;
-            if(!string.IsNullOrEmpty(numberOfCards))
+            int numOfCards, numOfPlayers;
+            if (!string.IsNullOrEmpty(numberOfCards))
             {
                 if (int.TryParse(numberOfCards, out numOfCards))
                 {
@@ -39,6 +45,7 @@ namespace CardGame.Domain
                 }
             }
         }
-        #endregion
+
+        #endregion Constructors
     }
 }

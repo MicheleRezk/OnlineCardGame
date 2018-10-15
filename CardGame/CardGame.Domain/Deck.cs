@@ -12,14 +12,18 @@ namespace CardGame.Domain
     public class Deck : ICloneable
     {
         #region Properites
-        public List<Card> Cards { get; set; }
-        #endregion
+
+        public List<Card> Cards { get; private set; }
+
+        #endregion Properites
 
         #region Constructors
+
         public Deck()
         {
             Cards = new List<Card>();
         }
+
         public Deck(List<Card> cards)
         {
             Cards = cards;
@@ -31,10 +35,11 @@ namespace CardGame.Domain
         /// <returns></returns>
         public object Clone()
         {
-            var newDeck =  MemberwiseClone() as Deck;
+            var newDeck = MemberwiseClone() as Deck;
             newDeck.Cards = new List<Card>(this.Cards);
             return newDeck;
         }
-        #endregion
+
+        #endregion Constructors
     }
 }
