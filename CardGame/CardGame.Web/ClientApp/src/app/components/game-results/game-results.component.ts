@@ -6,6 +6,8 @@ import { RoundResult } from '../../models/round-result.model';
 //Services
 import { Config } from '../../services/config.service';
 import { PlayerCard } from '../../models/player-card.model';
+import { PlayerWinnings } from '../../models/player-winnings.model';
+import { platform } from 'os';
 
 @Component({
   selector: 'game-results',
@@ -60,11 +62,22 @@ export class GameResultsComponent implements OnInit {
       this.allPlayers.push(i);
     }
   }
-  getGameWinner(): number {
-    let winner: number = null;
+
+  getGameWinners(): PlayerWinnings[] {
+    let topWinners: PlayerWinnings[] = [];
     if (this.gameResults && this.gameResults.length > 0) {
-      //_.maxBy(this.gameResults, function (playerCard: PlayerCard) { return playerCard.card.value; });
+      var countByWinner = _.countBy(this.gameResults, function (roundResult: RoundResult) { return roundResult.winnerID });
+      //count of winning rounds per each player, fill this array
+      let countOfWinningsPerPlayer: PlayerWinnings[] = [];
+      _.mapKeys(countByWinner, function (value, key) {
+        let playerWinnings: PlayerWinnings = new PlayerWinnings(key, value);
+        countOfWinningsPerPlayer.push(playerWinnings);
+        return playerWinnings;
+      });
+
+      let maxWinning: PlayerWinnings = _.maxBy(countOfWinningsPerPlayer, function (winningsCountPerPlayer: PlayerWinnings) { return winningsCountPerPlayer.countOfWinnings });
+      topWinners = _.find(countOfWinningsPerPlayer, function (winningsCountPerPlayer: PlayerWinnings) { return winningsCountPerPlayer.countOfWinnings == maxWinning.countOfWinnings; });
     }
-    return winner;
+    return topWinners;
   }
 }

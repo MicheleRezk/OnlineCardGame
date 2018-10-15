@@ -12,11 +12,11 @@
     <form>
       <div class="form-group col-xs-6">
         <label>Number of Players:</label>
-        <input name="palyersNo" type="number" min="2" max="10" class="form-control" placeholder="# of Players" [(ngModel)]='playersCount'>
+        <input name="playersNumber" type="number" min="{{minPlayersCount}}" max="{{maxPlayersCount}}" class="form-control" placeholder="# of Players" [(ngModel)]='playersCount'>
       </div>
       <div class="form-group col-xs-6">
         <label>Number of Rounds:</label>
-        <input name="rounds" type="number" min="2" max="10" class="form-control" placeholder="# of Rounds" [(ngModel)]='roundsCount'>
+        <input name="roundsNumber" type="number" min="{{minRoundsCount}}" max="{{maxRoundsCount}}" class="form-control" placeholder="# of Rounds" [(ngModel)]='roundsCount'>
       </div>
       <div class="form-group col-xs-12  divStartGame">
         <button type="button" class="btn btn-primary" (click)="initalizeCardGame()">Start New Game</button>

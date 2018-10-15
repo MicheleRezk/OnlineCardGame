@@ -24,6 +24,11 @@ export class CardGameComponent implements OnInit {
   gameResults: RoundResult[] //store all round results
 
   //game settings
+  minPlayersCount: number = 2;
+  maxPlayersCount: number = 10;
+  minRoundsCount: number = 2;
+  maxRoundsCount: number = 26;
+
   playersCount: number = 2;
   roundsCount: number = null;
   currentPlayer: number = 1;
@@ -81,9 +86,14 @@ export class CardGameComponent implements OnInit {
       this.currentPlayer = 1;
       //start new round our exist the game
       if (this.currentRound + 1 > this.roundsCount)//this means it's the last round and we should exit the game
+      {
         this.isGameFinished = true;
-      else
+        //get game winners
+        //this.winner = this.Child_GameResults.getGameWinner();
+      }
+      else {
         this.currentRound++;
+      }
     }
     else {
       this.currentPlayer++;
