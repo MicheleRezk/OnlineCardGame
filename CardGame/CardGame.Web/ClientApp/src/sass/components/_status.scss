@@ -1,0 +1,23 @@
+@import "../variables";
+
+.status {
+  text-align: center;
+  margin-top: $gutter;
+  padding: $gutter;
+  color: white;
+  background-color: $primary;
+
+  .current {
+    font-size: 20px;
+  }
+
+  .message {
+    border-radius: 50px;
+    background-color: white;
+    border: 1px solid transparent;
+    color: $primary;
+    padding: 5px 24px;
+    font-weight: bold;
+    display: block;
+  }
+}

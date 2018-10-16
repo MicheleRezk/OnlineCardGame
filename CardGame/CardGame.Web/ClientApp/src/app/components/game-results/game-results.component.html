@@ -1,31 +1,34 @@
-<!--Game results, all rounds and per each round player draw card, and round winner-->
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><b>Game Results:</b></div>
-  <div class="panel-body">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Round</th>
-          <!--draw players as columns-->
-          <ng-container *ngFor="let playerId of allPlayers; let i = index;">
-            <th scope="col">Player {{playerId}}</th>
-          </ng-container>
-          <th scope="col">Round Winner</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!--iterate through each round result-->
-        <ng-container *ngFor="let roundResult of gameResults; let i = index;">
+<!-- Game-Results -->
+<div class="card results">
+  <div class="card-body">
+    <div class="card-title text-primary text-center"><h4>Game Results</h4></div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered">
+        <!-- Table-Head -->
+        <thead class="bg-primary text-white">
           <tr>
-            <th scope="row">{{roundResult.roundID}}</th>
-            <ng-container *ngFor="let playerCard of roundResult.playerCards; let j = index;">
-              <td scope="col">{{playerCard.card.value}}</td>
+            <th scope="col">Round</th>
+            <ng-container *ngFor="let playerId of allPlayers; let i = index;">
+              <th scope="col">Player {{playerId}}</th>
             </ng-container>
-            <td>{{roundResult.winnerID}}</td>
+            <th scope="col">Round Winner</th>
           </tr>
-        </ng-container>
-      </tbody>
-    </table>
+        </thead>
+
+        <!-- Table-Body -->
+        <tbody>
+          <ng-container *ngFor="let roundResult of gameResults; let i = index;">
+            <tr>
+              <td scope="col">{{roundResult.roundID}}</td>
+              <ng-container *ngFor="let playerCard of roundResult.playerCards; let j = index;">
+                <td scope="col">{{playerCard.card.value}}</td>
+              </ng-container>
+              <td scope="col">{{roundResult.winnerID?'Player '+roundResult.winnerID:'?'}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

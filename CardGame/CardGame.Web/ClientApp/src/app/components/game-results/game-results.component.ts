@@ -76,7 +76,7 @@ export class GameResultsComponent implements OnInit {
       });
 
       let maxWinning: PlayerWinnings = _.maxBy(countOfWinningsPerPlayer, function (winningsCountPerPlayer: PlayerWinnings) { return winningsCountPerPlayer.countOfWinnings });
-      topWinners = _.find(countOfWinningsPerPlayer, function (winningsCountPerPlayer: PlayerWinnings) { return winningsCountPerPlayer.countOfWinnings == maxWinning.countOfWinnings; });
+      topWinners = _.filter(countOfWinningsPerPlayer, function (winningsCountPerPlayer: PlayerWinnings) { return winningsCountPerPlayer.countOfWinnings == maxWinning.countOfWinnings; });
     }
     return topWinners;
   }

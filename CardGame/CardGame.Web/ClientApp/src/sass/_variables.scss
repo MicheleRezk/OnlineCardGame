@@ -1,0 +1,15 @@
+// Color system
+$primary: #4884b6;
+
+// Fonts
+$font-family-base: "Open Sans";
+
+// Options
+$enable-rounded: false;
+
+// Grid columns
+$grid-gutter-width: 24px;
+$gutter: $grid-gutter-width;
+
+// Original bootstrap variables
+@import "../../../ClientApp/node_modules/bootstrap/scss/variables";

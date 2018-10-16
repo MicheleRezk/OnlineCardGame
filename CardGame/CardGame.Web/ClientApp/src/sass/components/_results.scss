@@ -1,0 +1,15 @@
+@import "../variables";
+
+.results {
+  margin: $gutter 0;
+
+  th {
+    border: none;
+  }
+
+  th, tr, td {
+    font-weight: normal;
+    font-size: 16px;
+    padding: 5px 24px;
+  }
+}

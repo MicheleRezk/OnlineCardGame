@@ -3,13 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 //Components
 import { AppComponent } from './app.component';
 import { CardGameComponent } from './components/card-game/card-game.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 
 //Services
 import { Config } from './services/config.service';
@@ -20,14 +18,13 @@ import { GameResultsComponent } from './components/game-results/game-results.com
   declarations: [
     AppComponent,
     CardGameComponent,
-    GameResultsComponent,
-    NavMenuComponent,
-    SpinnerComponent
+    GameResultsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ModalModule.forRoot(),
     RouterModule.forRoot([
       { path: '', component: CardGameComponent, pathMatch: 'full' }
     ])

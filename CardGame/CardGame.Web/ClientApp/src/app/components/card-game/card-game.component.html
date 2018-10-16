@@ -1,53 +1,81 @@
-<div class='row'>
-  <h1 class="heading">Card Game</h1>
-  <!--(spinner)-->
-  <spinner [loading]="isLoading"></spinner>
+<div class='text-center'>
+  <h1 class="main-header">Card Game</h1>
 </div>
 
 <!--Game Settings-->
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><b>Game Settings - Change in settings and Press Start New Game</b></div>
-  <div class="panel-body">
-    <form>
-      <div class="form-group col-xs-6">
-        <label>Number of Players:</label>
-        <input name="playersNumber" type="number" min="{{minPlayersCount}}" max="{{maxPlayersCount}}" class="form-control" placeholder="# of Players" [(ngModel)]='playersCount'>
+<div class="card settings">
+  <div class="card-body text-center">
+    <div class="card-title text-primary"><h4>Game Settings</h4></div>
+    <div class="card-subtitle text-secondary mb-3">Change in settings and Press Start New Game</div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8 col-xl-6 ">
+        <form>
+          <div class="form-row">
+            <div class="form-group col-12 col-sm-6">
+              <label class="float-left">Number of Players:</label>
+              <input name="playersNumber" type="number" min="{{minPlayersCount}}" max="{{maxPlayersCount}}" class="form-control" placeholder="# of Players" [(ngModel)]='playersCount'>
+            </div>
+            <div class="form-group col-12 col-sm-6">
+              <label class="float-left">Number of Rounds:</label>
+              <input name="roundsNumber" type="number" min="{{minRoundsCount}}" max="{{maxRoundsCount}}" class="form-control" placeholder="# of Rounds" [(ngModel)]='roundsCount'>
+            </div>
+          </div>
+          <div class="form-group m-0">
+            <button type="button" class="btn btn-primary" (click)="initalizeCardGame()">Start New Game</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group col-xs-6">
-        <label>Number of Rounds:</label>
-        <input name="roundsNumber" type="number" min="{{minRoundsCount}}" max="{{maxRoundsCount}}" class="form-control" placeholder="# of Rounds" [(ngModel)]='roundsCount'>
-      </div>
-      <div class="form-group col-xs-12  divStartGame">
-        <button type="button" class="btn btn-primary" (click)="initalizeCardGame()">Start New Game</button>
-      </div>
-    </form>
-    <div class="form-group" *ngIf="true">
-      <label>Current Round: <span class="label label-danger">{{currentRound}} of {{roundsCount}}</span></label>
-      <label>Current Player: <span class="label label-danger">Player {{currentPlayer}} of {{playersCount}}</span></label>
     </div>
   </div>
 </div>
 
-<!--Game Results-->
+<!-- Game-Status -->
+<div class="status">
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-8 col-xl-6">
+      <h4>Game Status</h4>
+      <div class="row current">
+        <div class="col-12 col-sm-6">Current Round:{{currentRound}} of {{roundsCount}}</div>
+        <div class="col-12 col-sm-6">Current Player: {{currentPlayer}} of {{playersCount}}</div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-8 mt-4">
+      <span class="message">
+        Player {{currentPlayer}}: please click on any random card on the below deck
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- Deck -->
+<div class="card">
+  <div class="card-body">
+    <div class="deck" *ngIf='!isLoading && cards'>
+      <div class="row no-gutters justify-content-center">
+        <ng-container *ngFor="let card of cards; let i = index;">
+          <div class="col-4 col-sm-2 col-xl-1 deck-card" (click)="drawCard(card)" [ngClass]="{ 'active': (card.isOpened)}">
+            <div class="value">{{card.value}}</div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Game-Results -->
 <game-results [roundsCount]="roundsCount" [playersCount]="playersCount"></game-results>
 
-<div *ngIf="isGameFinished" class="winningMsg">
-  <label class="label label-success">Congratulations, winner is Player {{winner}}</label>
-</div>
-<!--Deck-->
-<div class="panel panel-primary">
-  <!-- Default panel contents -->
-  <div class="panel-heading"><b>Player {{currentPlayer}} : Please click on any randow card from the below deck</b></div>
-  <div class="panel-body">
-    <!--Cards Container-->
-    <div class="cards-container" *ngIf='!isLoading && cards'>
-      <ng-container *ngFor="let card of cards; let i = index;">
-        <div class="card-container" (click)="drawCard(card)">
-          <div class="card-item">{{card.value}}</div>
-          <img title="draw a card" alt="draw a card" src='/assets/images/card-dummy.png' class="card-image" [ngClass]="{ 'fade': (card.isOpened)}">
-        </div>
-      </ng-container>
+<!-- Winner-Modal -->
+<ng-template #winners>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="winnersModalTitle">Winners</h5>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      {{winningMsg}}
     </div>
   </div>
-</div>
+</ng-template>

@@ -1,0 +1,13 @@
+@import "../variables";
+
+.main-header {
+  font-size: 40px;
+  color: $primary;
+  font-weight: bold;
+  margin-bottom: $gutter;
+
+  @include media-breakpoint-up(sm) {
+    margin-top: $gutter;
+    font-size: 60px;
+  }
+}
